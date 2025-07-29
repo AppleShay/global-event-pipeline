@@ -1,0 +1,4 @@
+newsapi_key: "6e819d5a16714f4fa22a3120996e827b"
+newsapi_url: "https://newsapi.org/v2/top-headlines"
+country: "us"
+
