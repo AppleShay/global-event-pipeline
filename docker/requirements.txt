@@ -1,1 +1,5 @@
-fastapi\nrequests\npymongo\nnltk\n
+fastapi
+requests
+pymongo
+nltk
+PyYAML
