@@ -1,16 +1,27 @@
 # 🌍 Global Event Pipeline
 
-An automated ETL pipeline that fetches global news events from an external API, stores them in MongoDB, and exposes them through an API service. Scheduled to run weekly using `cron` for continuous updates.
+An end-to-end ETL pipeline that fetches global news events from APIs, processes them, and stores them in MongoDB.  
+Built with **Docker**, orchestrated with **docker-compose**, scheduled using **cron**, and fully automated with **GitHub Actions CI/CD** to DockerHub.
 
 ---
 
 ## 🚀 Features
 
-* **Automated ETL**: Extracts data from News API, transforms it, and loads into MongoDB.
-* **Weekly Scheduling**: Cron job configured for automated weekly runs.
-* **Containerized Deployment**: Uses Docker and Docker Compose for consistent builds.
-* **REST API Access**: API service to retrieve stored events.
-* **Log Management**: Automatic log rotation to prevent large file sizes.
+- **ETL Automation**: Fetches events from the News API and stores in MongoDB.
+- **Scheduled Runs**: Weekly cron job triggers ETL automatically.
+- **Containerized Deployment**: All components run inside Docker containers.
+- **Continuous Integration (CI)**: Automatically builds and tests on every push.
+- **Continuous Deployment (CD)**: Automatically pushes Docker image to DockerHub.
+- **Log Management**: Automated log rotation.
+
+---
+
+## 🛠 Tech Stack
+- **Python** (FastAPI, Requests, PyMongo, NLTK, PyYAML)
+- **MongoDB** (Data Storage)
+- **Docker & docker-compose**
+- **GitHub Actions** (CI/CD)
+- **Cron** (Scheduling)
 
 ---
 
@@ -18,21 +29,18 @@ An automated ETL pipeline that fetches global news events from an external API, 
 
 ```
 global-event-pipeline/
-│
-├── ansible/                  # (Optional) Deployment automation
-├── api/                      # API service code
-├── ci_cd/                    # CI/CD pipelines
-├── config/                   # Configuration files (e.g., settings.yaml)
-├── docker/                   # Dockerfiles and Compose config
-├── etl/                      # ETL scripts
-├── scripts/                  # Utility scripts (log rotation, cron jobs)
-├── tests/                    # Unit and integration tests
-├── .gitignore                
-├── Dockerfile.api            # API container
-├── Dockerfile.etl            # ETL container
-├── docker-compose.yml        # Service orchestration
-├── requirements.txt          # Python dependencies
-└── README.md                 # Project documentation
+│── ansible/ # Deployment automation (future)
+│── api/ # API service
+│── ci_cd/ # CI/CD configurations
+│── config/ # Configurations (settings.yaml)
+│── docker/ # Dockerfiles and docker-compose
+│── etl/ # Extract, Transform, Load scripts
+│── scripts/ # Utility scripts (log rotation, etc.)
+│── tests/ # Test cases
+│── .github/workflows/ # GitHub Actions CI/CD configs
+│── requirements.txt # Python dependencies
+│── docker-compose.yml # Multi-service orchestration
+│── README.md # Project documentation
 ```
 
 ---
@@ -92,12 +100,24 @@ It serves stored event data from MongoDB.
 
 ---
 
-## 📌 Next Steps
+## 🔄 CI/CD Pipeline
+CI: Runs tests and builds Docker images on every push.
 
-* Add CI/CD pipeline (GitHub Actions / Ansible).
-* Enhance API with filtering and pagination.
-* Add unit and integration tests.
+CD: Pushes the Docker image to DockerHub automatically.
 
+DockerHub Image:
+```
+docker pull appleshay/global-event-pipeline:latest
+docker run appleshay/global-event-pipeline:latest
+```
+
+---
+## 📌 Future Enhancements
+- Versioned releases on DockerHub (v1.0.0, v1.1.0, etc.)
+
+- Automated cloud deployment (AWS, GCP, or Swedish Science Cloud)
+
+- Enhanced data analytics on ingested events
 ---
 
 **Author:** Shaheryar (AppleShay)
